@@ -1,0 +1,71 @@
+<?php include 'header_view.phtml' ; ?>
+
+    <h2 class="text-white">Agregar producto</h2>
+
+    <form action="index.php?controller=productos&action=insert_productos" id="crearProducto" method="POST">
+
+
+
+  <label class="text-white" >Categoria:</label>
+      <select name="category">
+        <?php
+        foreach ($datoshijas as $datohija) {
+          echo "<option value={$datohija['ID']}>{$datohija['NAME']} </option>";
+        }  ?>
+
+      </select><br>
+
+      <!-- <div class="form-group text-white">
+
+        <label  name="sponsorizado">Sponsored:</label>
+        <select>
+          <option  value="N">N</option>
+          <option  value="Y">Y</option>
+        </select>
+      </div> -->
+
+      <label class="text-white" >Marca:</label>
+          <select name="brand">
+            <?php
+            foreach ($datosmarcas as $datosmarca) {
+              echo "<option value={$datosmarca['ID']}>{$datosmarca['NAME']} </option>";
+            }  ?>
+
+          </select>
+
+
+      <div class="form-inline text-white">
+        <label >Precio: </label>
+        <input type="text" class="form-control" id="price" placeholder="€" name="price" style="margin-left: 78px;">
+      </div>
+
+      <div class="form-inline text-white">
+        <label >Stock: </label>
+        <input type="text" class="form-control" id="stock" placeholder="stock" name="stock" style="margin-left: 84px;">
+      </div>
+
+      <div class="form-inline text-white">
+        <label>Nombre: </label>
+        <input type="text" class="form-control" id="nombre" placeholder="Ej. Asus Z370-F Gaming" name="nombre" style="margin-left: 67px;">
+      </div>
+
+
+
+      <div class="form-inline text-white">
+        <label>Descripción corta: </label>
+        <input type="text" class="form-control" id="descorta" placeholder="Ej. Asus Z370-F Gaming" name="descorta">
+      </div>
+
+      <div class="form-inline text-white">
+        <label>Descripción larga: </label>
+        <input type="text" class="form-control" id="deslarga" placeholder="Ej. Nueva placa base..." name="deslarga">
+      </div>
+      <br>
+
+
+      <button type="submit" name="insert_productos" class="btn btn-info btn-lg" style="
+    margin-bottom: 400px;">Crear producto</button>
+    </form>
+
+
+<?php include 'footer_view.phtml' ; ?>

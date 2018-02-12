@@ -1,0 +1,33 @@
+<?php include 'header_view.phtml' ; ?>
+
+  <br>  <h2 class="text-white">Agregar categoria</h2><br>
+
+    <form action="index.php?controller=categorias&action=insert_categorias" method="post" id="crearCategoria">
+
+        <label class="text-white">Categoria padre:</label>
+      <select name="parentcategory">
+          <option >NULL</option>
+        <?php
+        foreach ($datospadres as $datopadre) {
+          echo "<option value={$datopadre['ID']}>{$datopadre['NAME']} </option>";
+        } ?>
+
+      </select>
+      <br>
+
+
+
+      <div class="form-inline text-white">
+        <label>Nombre: </label>
+        <input type="text" class="form-control" id="name" placeholder="Nueva categoria" name="name">
+      </div><br><br>
+
+
+
+
+      <button type="submit" name="insert_categorias" class="btn btn-info btn-lg" style="
+    margin-bottom: 400px;">Crear Categoria</button>
+    </form>
+
+
+<?php include 'footer_view.phtml' ; ?>

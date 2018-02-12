@@ -1,0 +1,35 @@
+
+<!-- inicio footer_view -->
+
+      </div> <!-- fin del container fluid  -->
+
+      <?php
+     if (isset($_SESSION['name'])) {
+     if ($_SESSION['name'] == "admin") {
+
+     ?>
+     <!-- fondo del header gris -->
+       <footer class="bg-secondary">
+     <?php
+
+
+     } else {
+     ?>
+    <footer class="bg-dark"><?php
+     }
+     } else {
+     ?>   <footer class="bg-dark">
+     <?php
+     }
+      ?>
+
+    <p class="text-white">Echo por: Gabriel Mas Simon</p>
+    <p class="text-white">Información de contacto: <a href="mailto:g.mas.simon@gmail.com">g.mas.simon@gmail.com</a>.</p>
+  </footer>
+
+
+
+  </body>
+  </html>
+
+<!-- fin footer_view -->

@@ -1,0 +1,38 @@
+<?php include 'header_view.phtml' ; ?>
+
+
+
+          <!-- Código PHP -->
+
+          <!-- Cuadraditos -->
+          <div class="row contenido">
+    <div class="col-11 col-sm-4  col-md-4" >
+<img class="img-fluid" src="<?php echo $PRODUCT['URL'] ?>" >
+    </div>
+
+
+    <div class="col-11 col-sm-8  col-md-8 text-white" >
+      <h4 ><?php echo $PRODUCT['SHORTDESCRIPTION'] ?> </h4>
+      <p><?php echo $PRODUCT['LONGDESCRIPTION'] ?></p>
+      <h1 ><?php echo $PRODUCT['PRICE'] ?> €</h1>
+
+      <small> <?php
+      if ($PRODUCT['STOCK'] == 0) { ?>
+        <span style="color:red"> <?php echo "No quedan productos"; ?></span>
+        <?php
+      } elseif ($PRODUCT['STOCK'] < 5) { ?>
+            <span style="color:orange"> <?php echo "Quedan pocos en stock"; ?></span>
+          <?php } else{?>
+              <span style="color:green"> <?php echo "Hay productos en stock"; ?></span>
+          <?php } ?>
+    </small><br><br>
+
+      <a href="#" class="btn btn-primary">Comprar</a>
+
+    </div>
+  </div>
+
+            <!-- FIN Cuadraditos -->
+
+
+<?php include 'footer_view.phtml' ; ?>

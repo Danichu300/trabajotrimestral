@@ -1,0 +1,218 @@
+<!--  inicio hedarer view-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>GMS Informática</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="estilos.css">
+</head>
+
+<body class="bg-dark" >
+
+  <div class="container-fluid ">
+
+    <header>
+
+      <!-- Menu superior -->
+
+       <?php
+if (isset($_SESSION['name'])) {
+  if ($_SESSION['name'] == "admin") {
+
+    ?>
+  <!-- fondo del header gris -->
+  <div class=" row align-items-start bg-secondary text-dark">
+  <?php
+
+
+  } else {
+    ?>
+  <div class=" row align-items-start bg-light text-dark"><?php
+  }
+} else {
+  ?>   <div class=" row align-items-start bg-light text-dark">
+  <?php
+}
+       ?>
+
+        <div class="col-12 col-sm-12 col-md-12 row">
+
+          <!-- Brand/logo -->
+          <a class="navbar-brand" href="http://localhost/ejercicios1/trabajo%20trimesral/" style="margin-left:25px;">
+            <img src="Imagenes/Web/logo.png" alt="logo" style="width:200px;">
+          </a>
+
+
+
+
+
+          <form class="form-inline" action="/action_page.php" style="margin-right:10px;">
+            <input class="form-control" type="text" placeholder="Buscar...">
+            <button class="btn btn-info" type="submit">Buscar</button>
+          </form>
+
+
+
+
+          <?php if (isset($_SESSION['name'])) {
+
+            //Si el usuario es admin, muestra lo siguiente
+            if ($_SESSION['name'] == "admin") {
+
+              ?>
+
+              <!-- Menu de coniguración -->
+              <div class="dropdown" style="  margin-top: 8px; margin-right:10px; ">
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                  Configuración
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="index.php?controller=productos&action=add_productos">Añadir productos</a>
+                  <a class="dropdown-item" href="index.php?controller=categorias&action=add_categorias">Añadir categorias</a>
+                  <a class="dropdown-item" href="#">Añadir promociones</a>
+                </div>
+              </div>
+
+              <a type="button" class="btn btn-info" href="index.php?controller=usuarios&action=logout">Logout </a>
+
+              <?php
+
+
+            }else {
+              //Si esta registrado pero no es el usuario admin
+
+              ?>
+
+              <div class="dropdown" style="
+              margin-right: 10px;
+              margin-top: 8px;
+              ">
+              <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                Perfil
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Hola <?php echo $_SESSION['name']; ?></a>
+
+
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item disabled" href="#">Editar perfil</a>
+                <a class="dropdown-item" href="#">Histórico de compras</a>
+              </div>
+            </div>
+            <br>
+
+            <a type="button" class="btn btn-info btn-lg" href="index.php?controller=usuarios&action=logout">Logout </a>
+            <?php
+          }
+
+        }  else {
+          ?> <a type="button" class="btn btn-info btn-lg" href="index.php?controller=usuarios&action=add">Entra o regístrate</a>
+          <?php
+        }?>
+
+<!-- inicio carrito -->
+
+<?php if (isset($_SESSION['name'])) {
+
+  //Si el usuario es admin, muestra lo siguiente
+  if ($_SESSION['name'] == "admin") {
+
+    ?>
+
+
+
+    <?php
+
+
+  }else {
+    //Si esta registrado pero no es el usuario admin
+
+    ?>
+    <!-- Brand/logo -->
+    <a class="navbar-brand" href="#">
+      <img src="Imagenes/Web/carrito.png" alt="logo" style="width:50px;">
+    </a>
+    <span class="badge badge-light">4</span>
+
+  <?php
+}
+
+}  else {
+?> <!-- Brand/logo -->
+<a class="navbar-brand" href="#">
+  <img src="Imagenes/Web/carrito.png" alt="logo" style="width:50px;">
+</a>
+<span class="badge badge-light">4</span>
+<?php
+}?>
+<!-- fin carrito -->
+
+
+      </div>
+    </div>
+
+
+
+
+    <!-- Menu categorias -->
+
+    <nav class=" row navbar navbar-expand-md bg-dark navbar-dark">
+      <a class="navbar-brand" href="#">Categorias</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <!-- Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Componentes
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="index.php?controller=productos&action=verProcesadores">Procesadores</a>
+              <a class="dropdown-item" href="index.php?controller=productos&action=verGraficas">Gráficas</a>
+              <a class="dropdown-item" href="index.php?controller=productos&action=verRam">Memorias Ram</a>
+              <a class="dropdown-item" href="index.php?controller=productos&action=verPBase">Placas Base</a>
+
+            </div>
+
+            <!-- Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                Perifericos
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="index.php?controller=productos&action=view">Monitores</a>
+                <a class="dropdown-item" href="index.php?controller=productos&action=verTeclados">Teclados</a>
+                <a class="dropdown-item" href="index.php?controller=productos&action=verRatones">Ratones</a>
+              </div>
+
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                  Ordenadores
+                </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="index.php?controller=productos&action=verPortatiles">Portatiles</a>
+                  <a class="dropdown-item" href="index.php?controller=productos&action=verPCSobremesa">PC Sobremesa</a>
+
+                </div>
+
+              </ul>
+            </div>
+          </nav><!--Fin Menu categorias  ok-->
+
+
+
+        </header><!-- header ok-->
+
+
+
+
+
+        <!-- fin header_view -->

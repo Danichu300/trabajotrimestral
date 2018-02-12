@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+    <script src="ejercicio4.js"></script>
+  </head>
+  <body onload="funcion()">
+    <form name="form" onsubmit="return funcion()">
+      <label>Nombre:</label>
+      <input type="text" id="texto1"  onblur="texto()" />
+      <label id="primeraComprobacion"></label>
+      <br>
+      <br>
+      <label>E-mail:</label>
+      <input type="text" id="correo"  onblur="correo1()"/>
+      <label id="sc"></label>
+      <br>
+      <br>
+      <label>Contraseña:</label>
+      <input type="password" id="password" size="20">
+      <br>
+      <br>
+      <label>Repetir Contraseña:</label>
+      <input type="password" id="password2" size="20" onkeyup="password1(); return false;">
+      <label id="tc"></label>
+      <br>
+      <br>
+      <label>Captcha: </label><label id="ramdom1"></label><label> + </label><label id="ramdom2"></label>
+      <input type="text" id="captcha" onblur="capchat()"/><div id="cc"></div><br>
+      <input type="submit" name="enviar" value="Enviar" disabled onclick="comprobarErrores()">
+      <p id="errores"></p>
+    </form>
+  </body>
+</html>
