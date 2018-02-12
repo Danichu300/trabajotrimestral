@@ -104,6 +104,13 @@ if (isset($_GET['controller']) && isset($_GET['action']) ) {
 
     }
 
+    //Buscador
+    if ($_GET['action'] == "search") {
+        $valor = $_POST["buscador"];
+        $controller = new productos_controller();
+        $controller->search($valor);
+    }
+
 
 
   }

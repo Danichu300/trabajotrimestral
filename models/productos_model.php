@@ -293,5 +293,19 @@ public function insertar_productos() {
      }
 }
 
+//Buscador
+public function search($valor){
+
+  $consulta=$this->db->query("SELECT *, img.URL FROM PRODUCT prod
+    join IMAGE img on prod.ID = img.PRODUCT WHERE SHORTDESCRIPTION like '%$valor%';");
+
+  while($filas=$consulta->fetch_assoc()){
+      $this->productos[]=$filas;
+  }
+  return $this->productos;
+
+
+}
+
 }
 ?>

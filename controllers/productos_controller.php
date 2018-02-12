@@ -254,8 +254,15 @@ class productos_controller {
     }
   }
 
+//Buscador
+  function search($valor) {
 
+        $productos = new productos_model();
 
+        $datos = $productos->search($valor);
+
+  require_once("views/productos_view.phtml");
+    }
 
 }
 ?>

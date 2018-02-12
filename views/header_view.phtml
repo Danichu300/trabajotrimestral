@@ -48,13 +48,10 @@ if (isset($_SESSION['name'])) {
           </a>
 
 
-
-
-
-          <form class="form-inline" action="/action_page.php" style="margin-right:10px;">
-            <input class="form-control" type="text" placeholder="Buscar...">
-            <button class="btn btn-info" type="submit">Buscar</button>
-          </form>
+          <form class="form-inline" action="index.php?controller=productos&action=search" method="POST">
+                <input class="form-control mr-sm-2" type="search" name="buscador" placeholder="Buscar..." aria-label="Buscar">
+                <button class="btn btn-info " type="submit">Search</button>
+            </form>
 
 
 
