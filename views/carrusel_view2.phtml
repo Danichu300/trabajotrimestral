@@ -1,0 +1,28 @@
+<!-- Carrusel -->
+
+  <div id="demo" class="row carousel slide " data-ride="carousel" >
+<div class="carousel-inner">
+<?php foreach ($data_carousel as $dato){ ?>
+
+<div class="carousel-item active">
+<img src="<?php echo $dato['URL'] ?>">
+<div class="carousel-caption">
+<h3>Los Angeles</h3>
+
+</div>
+</div>
+
+
+</div>
+<?php }?>
+
+
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+
+<!-- fin carrusel -->

@@ -5,18 +5,55 @@ require_once("models/productos_model.php");
 
 class productos_controller {
 
+  /**
+   * Elimina una fila de la taula
+   * @return No
+   */
+  function get_producto($id) {
 
+      $PRODUCT=new productos_model();
+
+      $ID = $_GET['ID'];
+
+      $error = $PRODUCT->get_producto($ID);
+
+      return $error;
+    }
+
+
+  function view_producto($PRODUCT){
+  require_once ('views/producto_view.phtml');
+  }
+
+
+  /**
+  * Mostra llistat
+  * @return No
+  */
+  function view() {
+  $PRODUCT=new productos_model();
+
+  //Uso metodo del modelo de product
+  $datos=$PRODUCT->get_product();
+
+  //Uso metodo del modelo de product
+  // $datos_carousel = $PRODUCT->get_carrousel();
+
+
+  //Llamado a la vista: mostrar la pantalla product, que es la misma que producto_view, solo que se le añade carrusel
+  require_once("views/product_view.phtml");
+  }
 
 
   /**
   * Mostra llistat monitores
   * @return No
   */
-  function view() {
+  function verMonitores() {
     $productos=new productos_model();
 
     //Uso metodo del modelo de product
-    $datos=$productos->get_productos();
+    $datos=$productos->get_monitores();
 
     //Llamado a la vista: mostrar la pantalla
     require_once("views/productos_view.phtml");
@@ -30,7 +67,7 @@ class productos_controller {
     $productos=new productos_model();
 
     //Uso metodo del modelo de product
-    $datos=$productos->verTeclados();
+    $datos=$productos->get_Teclados();
 
     //Llamado a la vista: mostrar la pantalla
     require_once("views/productos_view.phtml");
@@ -44,7 +81,7 @@ class productos_controller {
     $productos=new productos_model();
 
     //Uso metodo del modelo de product
-    $datos=$productos->verRatones();
+    $datos=$productos->get_Ratones();
 
     //Llamado a la vista: mostrar la pantalla
     require_once("views/productos_view.phtml");
@@ -58,7 +95,7 @@ class productos_controller {
     $productos=new productos_model();
 
     //Uso metodo del modelo de product
-    $datos=$productos->verProcesadores();
+    $datos=$productos->get_Procesadores();
 
     //Llamado a la vista: mostrar la pantalla
     require_once("views/productos_view.phtml");
@@ -73,7 +110,7 @@ class productos_controller {
     $productos=new productos_model();
 
     //Uso metodo del modelo de product
-    $datos=$productos->verGraficas();
+    $datos=$productos->get_Graficas();
 
     //Llamado a la vista: mostrar la pantalla
     require_once("views/productos_view.phtml");
@@ -88,7 +125,7 @@ class productos_controller {
     $productos=new productos_model();
 
     //Uso metodo del modelo de product
-    $datos=$productos->verRam();
+    $datos=$productos->get_Ram();
 
     //Llamado a la vista: mostrar la pantalla
     require_once("views/productos_view.phtml");
@@ -103,7 +140,7 @@ class productos_controller {
     $productos=new productos_model();
 
     //Uso metodo del modelo de product
-    $datos=$productos->verPBase();
+    $datos=$productos->get_PBase();
 
     //Llamado a la vista: mostrar la pantalla
     require_once("views/productos_view.phtml");
@@ -118,7 +155,7 @@ class productos_controller {
     $productos=new productos_model();
 
     //Uso metodo del modelo de product
-    $datos=$productos->verPortatiles();
+    $datos=$productos->get_Portatiles();
 
     //Llamado a la vista: mostrar la pantalla
     require_once("views/productos_view.phtml");
@@ -133,7 +170,7 @@ class productos_controller {
     $productos=new productos_model();
 
     //Uso metodo del modelo de product
-    $datos=$productos->verPCSobremesa();
+    $datos=$productos->get_PCSobremesa();
 
     //Llamado a la vista: mostrar la pantalla
     require_once("views/productos_view.phtml");

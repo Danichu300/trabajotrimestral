@@ -77,8 +77,10 @@ public function setCp($cp) {
 *         [string] amb text d'error si no ha anat bé
 */
 public function insertar() {
+    $salt = "$1$encriptat";
+    $hashed_password = crypt($this->password, $salt);
 
-     $sql = "INSERT INTO USER (USERNAME, PASSWORD, NAME, EMAIL, ADRESS, POSTALCODE) VALUES ('{$this->username}','{$this->password}','{$this->name}','{$this->email}','{$this->direccion}','{$this->cp}')";
+     $sql = "INSERT INTO USER (USERNAME, PASSWORD, NAME, EMAIL, ADRESS, POSTALCODE) VALUES ('{$this->username}','{$hashed_password}','{$this->name}','{$this->email}','{$this->direccion}','{$this->cp}')";
      $result = $this->db->query($sql);
 
 
@@ -95,15 +97,19 @@ public function buscar_usuarios(){
   // var_dump($this->password);
 
 
-$sql = "select USERNAME, PASSWORD from USER where USERNAME = '{$this->username}' and PASSWORD = '{$this->password}';";
+$sql = "SELECT USERNAME, PASSWORD FROM USER WHERE USERNAME = '{$this->username}';";
 $result = $this->db->query($sql);
+$row = mysqli_fetch_assoc($result);
+$valid_password = password_verify($this->password, $row['PASSWORD']);
 // var_dump($result);
 
-if ($result->num_rows > 0) {
-
-// echo "hola";
-return true;
-}else{
+if($result->num_rows > 0) {
+  if ($valid_password) {
+    return true;
+  } else {
+    return false;
+  }
+} else {
   return false;
 }
 

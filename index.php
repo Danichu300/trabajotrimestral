@@ -2,64 +2,42 @@
 session_start();
 require_once("db/db.php");
 
-require_once("controllers/product_controller.php");
-require_once("controllers/producto_controller.php");
+
+
 require_once("controllers/productos_controller.php");
 require_once("controllers/usuarios_controller.php");
 require_once("controllers/categorias_controller.php");
 
 if (isset($_GET['controller']) && isset($_GET['action']) ) {
 
-  if ($_GET['controller'] == "PRODUCT") {
-
-    if ($_GET['action'] == "view") {
-      $controller = new product_controller();
-      $controller->view();
-    }
-
-    //Obtener imagen
-    if ($_GET['action'] == "get_imagen") {
-      $controller = new product_controller();
-      $controller->get_imagen();
-    }
 
 
 
-
-
-  }
-
-  //Producto y su descripción
-
-  if ($_GET['controller'] == "producto") {
-
-    if ($_GET['action'] == "get_producto") {
-      $ID= $_GET['ID'];
-      $controller = new producto_controller();
-      $PRODUCT= $controller->get_producto($ID);
-      $controller->view_producto($PRODUCT);
-    }
-
-
-
-
-
-
-
-  }
 
   // productos
   if ($_GET['controller'] == "productos") {
 
+    if ($_GET['action'] == "get_producto") {
+      $ID= $_GET['ID'];
+      $controller = new productos_controller();
+      $PRODUCT= $controller->get_producto($ID);
+      $controller->view_producto($PRODUCT);
+    }
+
+    if ($_GET['action'] == "view") {
+      $controller = new productos_controller();
+      $controller->view();
+
+    }
 
     if ($_GET['action'] == "insert_productos") {
       $controller = new productos_controller();
       $controller->insert_productos();
     }
 
-    if ($_GET['action'] == "view") {
+    if ($_GET['action'] == "verMonitores") {
       $controller = new productos_controller();
-      $controller->view();
+      $controller->verMonitores();
     }
 
     if ($_GET['action'] == "verTeclados") {
@@ -183,23 +161,14 @@ if (isset($_GET['controller']) && isset($_GET['action']) ) {
       $controller->insert_categorias();
     }
 
-    // if ($_GET['action'] == "add_producto") {
-    //   $controller = new categorias_controller();
-    //   $controller->add_producto();
-    //
-    // }
-    //
-    // if ($_GET['action'] == "insert_producto") {
-    //   $controller = new categorias_controller();
-    //   $controller->insert_producto();
-    // }
+
 
 
   }
 
 
 } else {
-  $controller = new product_controller();
+  $controller = new productos_controller();
   $controller->view();
 }
 ?>

@@ -33,7 +33,20 @@ function insert() {
         $error = $usuarios->insertar();
 
         if (!$error) {
-            header( "Location: index.php");
+          $usuario = $_POST['name'];
+          $usuarios = new usuarios_model();
+          $usuarios->setUsername( $usuario );
+
+          $error = $usuarios->buscar_usuarios();
+          if ($error) {
+            $_SESSION['name'] = $usuario;
+            echo "usuario existente"; exit;
+          }else {
+            header( "Location: index.php?controller=usuarios&action=add");
+            // echo "usuario nuevo creado"; exit;
+          }
+            // header( "Location: index.php");
+
         }
         else {
             echo $error;
@@ -55,7 +68,7 @@ $error = $usuarios->buscar_usuarios();
 
 if ($error) {
   $_SESSION['name'] = $usuario;
-  header('location: index.php?controller=PRODUCT&action=view');
+  header('location: index.php?controller=productos&action=view');
     // echo "HAS LOGUEADO CORRECTAMEN"; exit;
 }
 else {
