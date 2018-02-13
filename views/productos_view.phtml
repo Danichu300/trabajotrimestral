@@ -29,7 +29,8 @@
           <?php } ?>
         </small><br><br>
 
-        <a href="#" class="btn btn-primary">Comprar</a>
+        <a href="index.php?controller=cart&action=addToCart&product=<?php echo $dato['ID']?>&productName=<?php echo $dato['SHORTDESCRIPTION']?>
+                                             &productPrice=<?php echo $dato['PRICE'] ?>&productImage=<?php echo $dato['URL']?>&productStock=<?php echo $dato['STOCK']?>"  class="btn btn-primary">Comprar</a>
 
       </div>
     </div>

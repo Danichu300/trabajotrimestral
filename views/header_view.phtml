@@ -139,12 +139,46 @@ if (isset($_SESSION['name'])) {
   <?php
 }
 
-}  else {
+}  else { //Si no esta logeado
 ?> <!-- Brand/logo -->
-<a class="navbar-brand" href="#">
-  <img src="Imagenes/Web/carrito.png" alt="logo" style="width:50px;">
-</a>
-<span class="badge badge-light">4</span>
+<div>  <ul class="nav navbar-nav navbar-right">
+        <!-- Carrito de compra -->
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle text-light" data-toggle="dropdown" role="button" aria-expanded="false">
+                  <img src="Imagenes/Web/carrito.png" alt="logo" style="width:50px;">
+                <span class="badge badge-dark "><?php echo count($_SESSION['cart']); ?></span>
+
+            </a>
+            <ul class="dropdown-menu dropdown-cart" role="menu">
+                <?php
+                if(!empty($_SESSION['cart'])){
+                    foreach ($_SESSION['cart'] as $carrito){ ?>
+                    <li>
+                        <span class="item">
+                            <span class="item-left">
+                                <img class="imgCart" src="<?php echo $carrito['image']?>" alt="<?php echo $carrito['name']?>"/>
+                                <span class="item-info">
+                                    <span><strong><?php echo $carrito['name']?></strong></span>
+                                    <span class="text-muted">Cantidad: <?php echo $carrito['numUnits']?></span>
+                                    <span> <kbd>Precio: <?php echo $carrito['price']?>€</kbd></span>
+                                </span>
+                            </span>
+                            <span class="item-right">
+                                <a href="index.php?controller=cart&action=deleteFromCart&product=<?php echo $carrito['id']?>"><button class="btn btn-danger">X</button></a>
+                            </span>
+                        </span>
+                    </li>
+                <?php } ?>
+                <li class="divider"></li>
+                <li><a class="text-center" href="#">View Cart</a></li>
+          </ul>
+        </li>
+                <?php } else{ ?>
+        <span class="badge">Carrito vacio</span>
+               <?php } ?>
+
+    </ul>
+</div>
 <?php
 }?>
 <!-- fin carrito -->
