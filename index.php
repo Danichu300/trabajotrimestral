@@ -7,38 +7,38 @@ require_once("db/db.php");
 require_once("controllers/productos_controller.php");
 require_once("controllers/usuarios_controller.php");
 require_once("controllers/categorias_controller.php");
-// require_once("controllers/cart_controller.php");
+ require_once("controllers/cart_controller.php");
 
 
-// if(empty($_SESSION['cart'])){
-//     $_SESSION['cart'] = [];
-// }
+if(empty($_SESSION['cart'])){
+    $_SESSION['cart'] = [];
+}
 
 if (isset($_GET['controller']) && isset($_GET['action']) ) {
 
 // carrito
 
-// if ($_GET['controller'] == "cart") {
-//     $cart = new cart_controller();
-//     if ($_GET['action'] == "addToCart") {
-//
-//          $num = !empty($_GET['numAddUnits']) ? $_GET['numAddUnits'] : 1;
-//         $products = [
-//             "id"=>$_GET['product'],
-//             "numAddUnits"=>$num,
-//             "name"=>$_GET['productName'],
-//             "price"=>$_GET['productPrice'],
-//             "image"=>$_GET['productImage'],
-//             "stock"=>$_GET['productStock']
-//             ];
-//         $cart->addToCart($products);
-//     }
-//     if ($_GET['action'] == "deleteFromCart") {
-//         $product = $_GET['product'];
-//         $cart->deleteFromCart($product);
-//     }
-//     header('Location: index.php');
-// }
+if ($_GET['controller'] == "cart") {
+    $cart = new cart_controller();
+    if ($_GET['action'] == "addToCart") {
+
+         $num = !empty($_GET['numAddUnits']) ? $_GET['numAddUnits'] : 1;
+        $products = [
+            "id"=>$_GET['product'],
+            "numAddUnits"=>$num,
+            "name"=>$_GET['productName'],
+            "price"=>$_GET['productPrice'],
+            "image"=>$_GET['productImage'],
+            "stock"=>$_GET['productStock']
+            ];
+        $cart->addToCart($products);
+    }
+    if ($_GET['action'] == "deleteFromCart") {
+        $product = $_GET['product'];
+        $cart->deleteFromCart($product);
+    }
+    header('Location: index.php');
+}
 
 
 
@@ -108,6 +108,13 @@ if (isset($_GET['controller']) && isset($_GET['action']) ) {
       $controller->verPCSobremesa();
     }
 
+    //Ver productos por categorias
+    if ($_GET['action'] == "verProductosPorCategoria") {
+
+  $controller = new productos_controller();
+      $controller->verProductosPorCategoria();
+    }
+
     //categorias
     if ($_GET['action'] == "categoriasPadreView") {
       $controller = new productos_controller();
@@ -139,16 +146,18 @@ if (isset($_GET['controller']) && isset($_GET['action']) ) {
         $controller->search($valor);
     }
 
-    //carrito
+    //carrito mal
 
-    if ($_GET['ation'] == "add_producto_carrito") {
-        $controller = new productos_controller();
-        $controller-> add_producto_carrito();
-    }
+    // if ($_GET['action'] == "add_producto_carrito") {
+    //     $controller = new productos_controller();
+    //     $controller-> add_producto_carrito();
+    // }
 
 
 
   }
+
+
 
   // Usuarios
   if ($_GET['controller'] == "usuarios") {
@@ -190,6 +199,11 @@ if (isset($_GET['controller']) && isset($_GET['action']) ) {
     if ($_GET['action'] == "categoriasHijasView") {
       $controller = new categorias_controller();
       $controller->categoriasHijasView();
+    }
+
+    if ($_GET['action'] == "categoriasHeaderView") {
+      $controller = new categorias_controller();
+      $controller->categoriasHeaderView();
     }
 
     if ($_GET['action'] == "add_categorias") {

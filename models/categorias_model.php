@@ -46,22 +46,35 @@ public function setParentcategory($parentcategory) {
 
  public function get_categoriasPadre(){
   //  $consulta=$this->db->query("select * from CATEGORY ");
-   $consulta=$this->db->query("select * from CATEGORY where PARENTCATEGORY IS NULL");
+   $consulta=$this->db->query("SELECT * from CATEGORY WHERE PARENTCATEGORY IS NULL;");
      while($filas=$consulta->fetch_assoc()){
          $this->categorias[]=$filas;
      }
+
      return $this->categorias;
+
 }
 
 public function get_categoriasHijas(){
 
-  $consulta=$this->db->query("select * from CATEGORY where PARENTCATEGORY IS NOT NULL");
+  $consulta=$this->db->query("select * from CATEGORY where PARENTCATEGORY  =  {$this->name};");
     while($filas=$consulta->fetch_assoc()){
         $this->categorias[]=$filas;
     }
     return $this->categorias;
 }
 
+//Categorias para el header
+public function get_categoriasHeaderView(){
+ //  $consulta=$this->db->query("select * from CATEGORY ");
+  $consulta=$this->db->query("select I1.NAME,I2.ID,I2.NAME as SUBCATEGORIA from CATEGORY I1  JOIN CATEGORY I2 WHERE I1.ID = I2.PARENTCATEGORY ORDER BY I1.NAME");
+    while($filas=$consulta->fetch_assoc()){
+        $this->categorias[]=$filas;
+    }
+
+    return $this->categorias;
+
+}
 public function insertar_categorias() {
 
 if ($this->parentcategory == "NULL") {

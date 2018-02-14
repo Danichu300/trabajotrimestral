@@ -1,0 +1,66 @@
+<?php include 'header_view.phtml' ; ?>
+
+
+
+          <!-- Código PHP -->
+
+          <!-- Cuadraditos -->
+          <div class="row contenido">
+    <!-- <div class="col-11 col-sm-4  col-md-4" >
+<img class="img-fluid" src="<?php echo $PRODUCT['URL'] ?>" >
+    </div> -->
+
+
+    <div class="col-11 col-sm-8  col-md-8 text-white" >
+
+      <table clas="table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Cantidad</th>
+              <th>Precio por unidad</th>
+              <th>Descripción pequeña</th>
+            </tr>
+          </thead>
+        </tbody>
+      <?php
+
+      $precio = 0;
+
+      foreach ($cesta21 as $compra) {
+
+        ?><tr>
+
+        <td><?php echo $compra["NAME"];?></td>
+        <td><?php echo $compra["ID"];?></td>
+        <td><?php echo $compra["PRICE"];?>€</td>
+        <td><?php echo $compra["SHORTDESCRIPTION"];?></td>
+        <td>
+          <!-- <a href="index.php?controller=productos&action=borrarcesta&numero1=<?php echo $compra["ID"];?>"> -->
+            <button>Eliminar</button>
+          </a>
+        </td>
+        </tr><?php
+
+        $precio = $precio + $compra["PRICE"];
+
+      }
+
+      ?>
+
+      <tr>
+
+      <td>Precio final: <?php echo $precio;?> €.</td>
+
+      <tr>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+            <!-- FIN Cuadraditos -->
+
+
+<?php include 'footer_view.phtml' ; ?>

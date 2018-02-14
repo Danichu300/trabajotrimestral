@@ -17,6 +17,7 @@ function categoriasPadreView(){
 
   require_once("views/productos_add.phtml");
 
+
 }
 
 function categoriasHijasView(){
@@ -27,6 +28,22 @@ function categoriasHijasView(){
 
   require_once("views/productos_add.phtml");
 
+
+}
+//categorias para el header
+function categoriasHeaderView(){
+
+  $categorias=new categorias_model();
+
+  $datospadresHeader=$categorias->get_categoriasHeaderView();
+
+  $categorias=new categorias_model();
+
+  $datoshijas=$categorias->get_categoriasHijas();
+
+  require_once("views/productos_add.phtml");
+
+
 }
 
 /**
@@ -34,6 +51,9 @@ function categoriasHijasView(){
  * @return No
  */
 function add_categorias() {
+
+  $categorias=new categorias_model();//Coge las categorias  para el menu
+  $datospadresHeader=$categorias->get_categoriasHeaderView();
 
   $categorias=new categorias_model();
   $datospadres=$categorias->get_categoriasPadre();  //Coge las categorias padre

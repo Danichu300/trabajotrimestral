@@ -246,6 +246,17 @@ private $nombre;
     return $this->productos;
   }
 
+  //Ver productos por categorias
+  public function get_ProductosPorCategoria(){
+
+    $id1 = $_GET["ID"];
+    $consulta=$this->db->query("select *, URL from PRODUCT left join IMAGE on ID = PRODUCT where CATEGORY = '$id1';");
+    while($filas=$consulta->fetch_assoc()){
+      $this->productos[]=$filas;
+    }
+    return $this->productos;
+  }
+
 //obtener categorias
   public function get_categoriasPadre(){
    //  $consulta=$this->db->query("select * from CATEGORY ");
@@ -303,9 +314,26 @@ public function search($valor){
       $this->productos[]=$filas;
   }
   return $this->productos;
-
-
 }
+
+//Cesta
+// public function get_cesta(){
+//
+//   $cesta = $_SESSION["cesta"];
+//
+//   foreach ($cesta as $linea){
+//
+//     $cestamuestra=$this->db->query("select * from PRODUCT WHERE ID = '$linea[0]';");
+//
+//     while($filas=$cestamuestra->fetch_assoc()){
+//         $cesta3[]=$filas;
+//     }
+//
+//   }
+//
+//   return $cesta3;
+//
+// }
 
 }
 ?>

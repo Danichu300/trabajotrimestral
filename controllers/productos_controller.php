@@ -6,23 +6,25 @@ require_once("models/productos_model.php");
 class productos_controller {
 
   /**
-   * Elimina una fila de la taula
-   * @return No
-   */
+  * Elimina una fila de la taula
+  * @return No
+  */
   function get_producto($id) {
 
-      $PRODUCT=new productos_model();
+    $PRODUCT=new productos_model();
 
-      $ID = $_GET['ID'];
+    $ID = $_GET['ID'];
 
-      $error = $PRODUCT->get_producto($ID);
+    $error = $PRODUCT->get_producto($ID);
 
-      return $error;
-    }
+    return $error;
+  }
 
 
   function view_producto($PRODUCT){
-  require_once ('views/producto_view.phtml');
+    $categorias=new categorias_model();//Coge las categorias padre para el menu
+    $datospadresHeader=$categorias->get_categoriasHeaderView();
+    require_once ('views/producto_view.phtml');
   }
 
 
@@ -31,17 +33,25 @@ class productos_controller {
   * @return No
   */
   function view() {
-  $PRODUCT=new productos_model();
-
-  //Uso metodo del modelo de product
-  $datos=$PRODUCT->get_product();
-
-  //Uso metodo del modelo de product
-  // $datos_carousel = $PRODUCT->get_carrousel();
 
 
-  //Llamado a la vista: mostrar la pantalla product, que es la misma que producto_view, solo que se le añade carrusel
-  require_once("views/product_view.phtml");
+
+    $categorias=new categorias_model();//Coge las categorias padre para el menu
+    $datospadresHeader=$categorias->get_categoriasHeaderView();
+
+
+
+    $PRODUCT=new productos_model();
+
+    //Uso metodo del modelo de product
+    $datos=$PRODUCT->get_product();
+
+    //Uso metodo del modelo de product
+    // $datos_carousel = $PRODUCT->get_carrousel();
+
+
+    //Llamado a la vista: mostrar la pantalla product, que es la misma que producto_view, solo que se le añade carrusel
+    require_once("views/product_view.phtml");
   }
 
 
@@ -176,6 +186,28 @@ class productos_controller {
     require_once("views/productos_view.phtml");
   }
 
+
+
+
+
+//Ver productos por categorias
+  function verProductosPorCategoria() {
+
+
+    $categorias=new categorias_model();//Coge las categorias padre para el menu
+    $datospadresHeader=$categorias->get_categoriasHeaderView();
+
+    $productos=new productos_model();
+
+
+
+    //Uso metodo del modelo de product
+    $datos=$productos->get_ProductosPorCategoria();
+
+    //Llamado a la vista: mostrar la pantalla
+    require_once("views/productos_view.phtml");
+  }
+
   // ver categorias
   function categoriasPadreView(){
 
@@ -188,6 +220,7 @@ class productos_controller {
     $datoshijas=$productos->get_categoriasHijas();
 
     require_once("views/productos_add.phtml");
+
 
   }
 
@@ -215,6 +248,10 @@ class productos_controller {
   * @return No
   */
   function add_productos() {
+
+
+    $categorias=new categorias_model();//Coge las categorias padre para el menu
+    $datospadresHeader=$categorias->get_categoriasHeaderView();
 
     $productos=new productos_model();
     $datoshijas=$productos->get_categoriasHijas();//coge las categorias hijas
@@ -254,15 +291,33 @@ class productos_controller {
     }
   }
 
-//Buscador
+  //Buscador
   function search($valor) {
 
-        $productos = new productos_model();
+    $categorias=new categorias_model();//Coge las categorias padre para el menu
+    $datospadresHeader=$categorias->get_categoriasHeaderView();
 
-        $datos = $productos->search($valor);
+    $productos = new productos_model();
+    $datos = $productos->search($valor);
 
-  require_once("views/productos_view.phtml");
-    }
+    require_once("views/productos_view.phtml");
+  }
+
+
+  //carrito
+
+  // function add_producto_carrito(){
+  //
+  //   $cesta = new productos_model();
+  //
+  //     $id = $_GET["id"];
+  //     $unidades = $_GET["uni"];
+  //
+  //     $cestaCompra = array ($id, $unidades);
+  //     $_SESSION["cesta"][] = $cestaCompra;
+  //
+  //     require_once("views/cesta_view.phtml");
+  // }
 
 }
 ?>
