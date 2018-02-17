@@ -1,17 +1,18 @@
 <?php include 'header_view.phtml' ;
 include 'carrusel_view.phtml' ;
+
 ?>
 
 
 <!-- Código PHP -->
 
 <!-- Cuadraditos -->
-<div class="row contenido">
+<div class="row contenido productos">
   <?php
 
   foreach ($datos as $dato) {
     ?>
-    <div class=" productos text-center card col-11 col-sm-5 col-lg-3"  >
+    <div class=" productos1 text-center card col-11 col-sm-5 col-lg-3 "  style="width:400px" >
       <a  href="index.php?controller=productos&action=get_producto&ID=<?php echo$dato['ID']?>" > <img class="card-img-top" src="<?php echo $dato['URL'] ?>"
         alt="Card image" style="width:100%"></a>
         <div class="card-body">
@@ -40,5 +41,29 @@ include 'carrusel_view.phtml' ;
   <!-- FIN Cuadraditos -->
 </div>
 
+<div class="row">
+  <div class=" col-2">
+                <form action="index.php?controller=productos&action=mComprar" method="post">
+                <label>-Marca-</label>
+                <br>
+                <?php foreach ($marcas as $marca) { ?>
+
+                  <input type="checkbox" name="marca" value="<?php echo $marca['ID']; ?>"><?php echo $marca['NAME']; ?><br>
+
+                <?php } ?>
+                <input type="submit" value="Buscar"><br><hr>
+                <label>-Precios-</label>
+                <br>
+              </form>
+              <form action="index.php?controller=productos&action=dComprar" method="post">
+                <input type="number" class="form-control pequeno" value="0" name="precioMinimo">
+                <label>hasta</label>
+                <input type="number" class="form-control pequeno" value="100" name="precioMaximo">
+                <br>
+                <input type="submit" value="Buscar"><br><hr>
+              </form>
+              </div>
+</div>
+<?php include'controllers/paginacion_controller.php'; ?>
 
 <?php include 'footer_view.phtml' ; ?>

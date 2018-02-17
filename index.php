@@ -7,38 +7,38 @@ require_once("db/db.php");
 require_once("controllers/productos_controller.php");
 require_once("controllers/usuarios_controller.php");
 require_once("controllers/categorias_controller.php");
- require_once("controllers/cart_controller.php");
-
+require_once("controllers/cart_controller.php");
+require_once("controllers/brand_controller.php");
 
 if(empty($_SESSION['cart'])){
-    $_SESSION['cart'] = [];
+  $_SESSION['cart'] = [];
 }
 
 if (isset($_GET['controller']) && isset($_GET['action']) ) {
 
-// carrito
+  // carrito
 
-if ($_GET['controller'] == "cart") {
+  if ($_GET['controller'] == "cart") {
     $cart = new cart_controller();
     if ($_GET['action'] == "addToCart") {
 
-         $num = !empty($_GET['numAddUnits']) ? $_GET['numAddUnits'] : 1;
-        $products = [
-            "id"=>$_GET['product'],
-            "numAddUnits"=>$num,
-            "name"=>$_GET['productName'],
-            "price"=>$_GET['productPrice'],
-            "image"=>$_GET['productImage'],
-            "stock"=>$_GET['productStock']
-            ];
-        $cart->addToCart($products);
+      $num = !empty($_GET['numAddUnits']) ? $_GET['numAddUnits'] : 1;
+      $products = [
+        "id"=>$_GET['product'],
+        "numAddUnits"=>$num,
+        "name"=>$_GET['productName'],
+        "price"=>$_GET['productPrice'],
+        "image"=>$_GET['productImage'],
+        "stock"=>$_GET['productStock']
+      ];
+      $cart->addToCart($products);
     }
     if ($_GET['action'] == "deleteFromCart") {
-        $product = $_GET['product'];
-        $cart->deleteFromCart($product);
+      $product = $_GET['product'];
+      $cart->deleteFromCart($product);
     }
     header('Location: index.php');
-}
+  }
 
 
 
@@ -111,7 +111,7 @@ if ($_GET['controller'] == "cart") {
     //Ver productos por categorias
     if ($_GET['action'] == "verProductosPorCategoria") {
 
-  $controller = new productos_controller();
+      $controller = new productos_controller();
       $controller->verProductosPorCategoria();
     }
 
@@ -141,9 +141,9 @@ if ($_GET['controller'] == "cart") {
 
     //Buscador
     if ($_GET['action'] == "search") {
-        $valor = $_POST["buscador"];
-        $controller = new productos_controller();
-        $controller->search($valor);
+      $valor = $_POST["buscador"];
+      $controller = new productos_controller();
+      $controller->search($valor);
     }
 
     //carrito mal
@@ -153,6 +153,20 @@ if ($_GET['controller'] == "cart") {
     //     $controller-> add_producto_carrito();
     // }
 
+    //Filtro
+    if($_GET['action'] == "mComprar"){
+
+           $bCompra = new productos_controller();
+           $bCompra->bCompra();
+
+         }
+
+         if($_GET['action'] == "dComprar"){
+
+          $bCompra = new productos_controller();
+          $bCompra->dCompra();
+
+        }
 
 
   }

@@ -127,13 +127,13 @@ private $nombre;
     return $this->PRODUCT;
   }
 
-  // public function get_carrousel(){
-  //     $consulta=$this->db->query("SELECT PRODUCT.ID, FORMAT(PRODUCT.PRICE, 0) AS PRICE, PRODUCT.SHORTDESCRIPTION, IMAGE.URL , PROMOTION.ID , PROMOTION.DISCOUNTPERCENTAGE, FORMAT(PRODUCT.PRICE,0)*(1-(PROMOTION.DISCOUNTPERCENTAGE)/100) AS DISCOUNTEDPRICE FROM PRODUCT , IMAGE, PROMOTION WHERE PRODUCT.ID = IMAGE.PRODUCT AND IMAGE.PRODUCT = PROMOTION.ID ;");
-  //     while ($filas=$consulta->fetch_assoc()) {
-  //       $this->PRODUCT[]=$filas;
-  //     }
-  //     return $this->PRODUCT;
-  //   }
+  public function get_carrousel(){
+    $consulta=$this->db->query("SELECT PRODUCT.ID, FORMAT(PRODUCT.PRICE, 0) AS PRICE, PRODUCT.SHORTDESCRIPTION, IMAGE.URL , PROMOTION.ID , PROMOTION.DISCOUNTPERCENTAGE, FORMAT(PRODUCT.PRICE,0)*(1-(PROMOTION.DISCOUNTPERCENTAGE)/100) AS DISCOUNTEDPRICE FROM PRODUCT , IMAGE, PROMOTION WHERE PRODUCT.ID = IMAGE.PRODUCT AND IMAGE.PRODUCT = PROMOTION.ID;");
+    while ($rows=$consulta->fetch_assoc()) {
+      $this->carousel[]=$rows;
+    }
+    return $this->carousel;
+  }
 
   /**
   * Extreu tots els productes de la taula
@@ -316,24 +316,57 @@ public function search($valor){
   return $this->productos;
 }
 
-//Cesta
-// public function get_cesta(){
-//
-//   $cesta = $_SESSION["cesta"];
-//
-//   foreach ($cesta as $linea){
-//
-//     $cestamuestra=$this->db->query("select * from PRODUCT WHERE ID = '$linea[0]';");
-//
-//     while($filas=$cestamuestra->fetch_assoc()){
-//         $cesta3[]=$filas;
-//     }
-//
-//   }
-//
-//   return $cesta3;
-//
-// }
+//filtro
+public function get_Marca(){
+
+  if(isset($_POST["marca"])){
+
+    $numeroMarca = $_POST["marca"];
+
+    $consulta=$this->db->query("select *,URL from PRODUCT left join IMAGE on ID = PRODUCT where BRAND = '$numeroMarca';");
+
+    while($filas=$consulta->fetch_assoc()){
+        $this->productos[]=$filas;
+    }
+
+    return $this->productos;
+
+  } else {
+
+    $consulta=$this->db->query("select *,URL from PRODUCT left join IMAGE on ID = PRODUCT");
+
+    while($filas=$consulta->fetch_assoc()){
+        $this->productos[]=$filas;
+    }
+
+    return $this->productos;
+
+  }
+
+}
+
+public function get_Dinero(){
+
+  $precioMinimo = $_POST["precioMinimo"];
+ $precioMaximo = $_POST["precioMaximo"];
+
+
+
+    $consulta=$this->db->query("SELECT * FROM PRODUCT WHERE PRICE > $precioMinimo AND PRICE < $precioMaximo");
+
+var_dump($precioMinimo);
+var_dump($precioMaximo); exit;
+    while($filas=$consulta->fetch_assoc()){
+        $this->productos[]=$filas;
+    }
+
+    return $this->productos;
+
+
+
+
+
+}
 
 }
 ?>

@@ -9,6 +9,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  <!--   Hacer que el botón de perfil sea desplegable con hover  -->
+
+  <script>
+  $('body').on('mouseenter mouseleave','.dropdown-hover',function(e){
+    var _d=$(e.target).closest('.dropdown-hover');_d.addClass('show');
+    setTimeout(function(){
+      _d[_d.is(':hover')?'addClass':'removeClass']('show');
+    },300);
+  });
+  </script>
   <link rel="stylesheet" type="text/css" href="estilos.css">
 </head>
 
@@ -68,7 +78,7 @@
                   <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
                     Configuración
                   </button>
-                  <div class="dropdown-menu">
+                  <div class="dropdown-menu ">
                     <a class="dropdown-item" href="index.php?controller=productos&action=add_productos">Añadir productos</a>
                     <a class="dropdown-item" href="index.php?controller=categorias&action=add_categorias">Añadir categorias</a>
                     <a class="dropdown-item" href="#">Añadir promociones</a>
@@ -85,9 +95,11 @@
 
                 ?>
 
-                <div class="dropdown" style="
+                <div class="dropdown dropdown-hover" style="
                 margin-right: 10px;
                 margin-top: 8px;
+                margin-left: 10px;
+
                 ">
                 <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
                   Perfil
@@ -103,12 +115,12 @@
               </div>
               <br>
 
-              <a type="button" class="btn btn-info btn-lg" href="index.php?controller=usuarios&action=logout">Logout </a>
+              <a type="button" class="btn btn-info btn-lg" href="index.php?controller=usuarios&action=logout" style="margin-right: 10px;">Logout </a>
               <?php
             }
 
           }  else {
-            ?> <a type="button" class="btn btn-info btn-lg" href="index.php?controller=usuarios&action=add">Entra o regístrate</a>
+            ?> <a type="button" class="btn btn-info btn-lg" href="index.php?controller=usuarios&action=add" style="  margin-left: 15px; margin-right: 10px;">Entra o regístrate</a>
             <?php
           }?>
 
@@ -209,11 +221,10 @@
         </li> <!-- Hijo fin -->
       <?php }  ?>
     </ul>
-  </div>
-</nav>
 
-<!--Fin Menu categorias  ok-->
 
-</header><!-- header ok-->
+    <!--Fin Menu categorias  ok-->
 
-<!-- fin header_view -->
+  </header><!-- header ok-->
+
+  <!-- fin header_view -->

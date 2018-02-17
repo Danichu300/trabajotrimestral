@@ -1,6 +1,7 @@
 <?php
 //Llamada al modelo
 require_once("models/productos_model.php");
+require_once("models/brand_model.php");
 
 
 class productos_controller {
@@ -39,7 +40,8 @@ class productos_controller {
     $categorias=new categorias_model();//Coge las categorias padre para el menu
     $datospadresHeader=$categorias->get_categoriasHeaderView();
 
-
+    $brand = new brand_model();//Coge el filtro
+    $marcas = $brand->get_brand();
 
     $PRODUCT=new productos_model();
 
@@ -47,7 +49,7 @@ class productos_controller {
     $datos=$PRODUCT->get_product();
 
     //Uso metodo del modelo de product
-    // $datos_carousel = $PRODUCT->get_carrousel();
+    $data_carousel = $PRODUCT->get_carrousel();
 
 
     //Llamado a la vista: mostrar la pantalla product, que es la misma que producto_view, solo que se le añade carrusel
@@ -190,7 +192,7 @@ class productos_controller {
 
 
 
-//Ver productos por categorias
+  //Ver productos por categorias
   function verProductosPorCategoria() {
 
 
@@ -304,20 +306,50 @@ class productos_controller {
   }
 
 
-  //carrito
+  //filtro
 
-  // function add_producto_carrito(){
-  //
-  //   $cesta = new productos_model();
-  //
-  //     $id = $_GET["id"];
-  //     $unidades = $_GET["uni"];
-  //
-  //     $cestaCompra = array ($id, $unidades);
-  //     $_SESSION["cesta"][] = $cestaCompra;
-  //
-  //     require_once("views/cesta_view.phtml");
-  // }
+  function bCompra(){
+
+    $producto = new productos_model();
+    $brand = new brand_model();
+    $categorias = new categorias_model();
+    $datos = $producto->get_Marca();
+    $marcas = $brand->get_brand();
+    $categorias=new categorias_model();//Coge las categorias padre para el menu
+    $datospadresHeader=$categorias->get_categoriasHeaderView();
+    //Marca
+
+    require_once("views/productos_view.phtml");
+
+  }
+
+  function dCompra(){
+    //Precio
+
+    $producto = new productos_model();
+
+    $categorias = new categorias_model();
+    $datos = $producto->get_Dinero();
+
+
+
+    $categorias=new categorias_model();//Coge las categorias padre para el menu
+    $datospadresHeader=$categorias->get_categoriasHeaderView();
+
+    $brand = new brand_model();//Coge el filtro
+    $marcas = $brand->get_brand();
+
+    $PRODUCT=new productos_model();
+
+    //Uso metodo del modelo de product
+    $datos=$PRODUCT->get_product();
+
+    //Uso metodo del modelo de product
+    $data_carousel = $PRODUCT->get_carrousel();
+
+    require_once("views/productos_view.phtml");
+
+  }
 
 }
 ?>

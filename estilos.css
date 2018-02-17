@@ -1,27 +1,46 @@
 
 /* vista donde se ven un conjunto de productos*/
-.productos{
-  margin: 10px;
-  align-text:center;
+.productos1{
+  margin:20px;
+}
 
+.productos{
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 #crearProducto{
   align-text:center;
   align-items: center;
-}
-/*header{
-  left: 0px;
-  position: fixed;
-  z-index: 1;
-  width: 100%;
-margin-bottom: 100px;
+
 }
 
+.carroussel_img{
+  height: 400px;
+}
 
+#OfertaCarrusel{
+  position: absolute;
+  top: 190px;
+  right: 186px;
 
+}
 
-.contenido{
+#NombreArtCarrusel{
+  position: absolute;
+  top: 143px;
+  right: 131px;
 
-padding-top: 150px;
-}*/
+}
+
+#carouselPromociones{
+  margin-bottom: 50px;
+}
+
+ /*Hacer que el botón de perfil sea desplegable con hover  */
+  .dropdown-hover:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-hover {
+width: 80px;
+}
