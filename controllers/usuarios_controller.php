@@ -43,9 +43,9 @@ function insert() {
             echo "usuario existente"; exit;
           }else {
             header( "Location: index.php?controller=usuarios&action=add");
-            // echo "usuario nuevo creado"; exit;
+
           }
-            // header( "Location: index.php");
+          
 
         }
         else {
@@ -64,15 +64,21 @@ $usuarios = new usuarios_model();
 $usuarios->setUsername( $usuario );
 $usuarios->setPassword( $password );
 
+$_SESSION["usuario"] = $usuario;
+
+
 $error = $usuarios->buscar_usuarios();
 
 if ($error) {
   $_SESSION['name'] = $usuario;
   header('location: index.php?controller=productos&action=view');
-    // echo "HAS LOGUEADO CORRECTAMEN"; exit;
+
 }
 else {
-    echo "FALLO "; exit;
+
+echo "FALLO  al iniciar sesion";
+  header('location: index.php?controller=usuarios&action=add');
+
 }
 }
 
@@ -82,6 +88,12 @@ session_start();
 session_unset();
 session_destroy();
 header('location: index.php');
+}
+
+public function buscar_usuarios(){
+  $user=new usuarios_model();
+
+    $usuarioUtilizando=$user->buscar_usuarios();
 }
 
 }

@@ -1,66 +1,81 @@
 <?php include 'header_view.phtml' ; ?>
 
+<?php
 
+$cestaVacia = $_SESSION["cesta"];
 
-          <!-- Código PHP -->
+if ($cestaVacia == null){
 
-          <!-- Cuadraditos -->
-          <div class="row contenido">
-    <!-- <div class="col-11 col-sm-4  col-md-4" >
-<img class="img-fluid" src="<?php echo $PRODUCT['URL'] ?>" >
-    </div> -->
+  echo "<p class=text-light>La cesta está vacía</p>";
 
+} else { ?>
 
-    <div class="col-11 col-sm-8  col-md-8 text-white" >
-
-      <table clas="table">
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Cantidad</th>
-              <th>Precio por unidad</th>
-              <th>Descripción pequeña</th>
-            </tr>
-          </thead>
-        </tbody>
-      <?php
-
-      $precio = 0;
-
-      foreach ($cesta21 as $compra) {
-
-        ?><tr>
-
-        <td><?php echo $compra["NAME"];?></td>
-        <td><?php echo $compra["ID"];?></td>
-        <td><?php echo $compra["PRICE"];?>€</td>
-        <td><?php echo $compra["SHORTDESCRIPTION"];?></td>
-        <td>
-          <!-- <a href="index.php?controller=productos&action=borrarcesta&numero1=<?php echo $compra["ID"];?>"> -->
-            <button>Eliminar</button>
-          </a>
-        </td>
-        </tr><?php
-
-        $precio = $precio + $compra["PRICE"];
-
-      }
-
-      ?>
-
+<div class="container">
+  <table clas="table ">
+    <thead>
       <tr>
+        <th class="text-light">Imagen</th>
+        <th class="text-light">Nombre</th>
+        <th class="text-light">Cantidad</th>
+        <th class="text-light"> €PUn</th>
+        <th class="text-light">Descripción </th>
+      </tr>
+    </thead>
+  </tbody>
+<?php
 
-      <td>Precio final: <?php echo $precio;?> €.</td>
+$precio = 0;
 
-      <tr>
+foreach ($cesta21 as $compra) {
 
-        </tbody>
-      </table>
+  ?><tr>
+  <td><img class="card-img-top img_cesta" src="<?php echo $compra['URL']; ?>" alt="Card image"></td>
+  <td class="text-light"><?php echo $compra["NAME"];?></td>
+  <td class="text-light"><?php echo $compra["ID"];?></td>
+  <td class="text-light"><?php echo $compra["PRICE"];?>€</td>
+  <td class="text-light"><?php echo $compra["SHORTDESCRIPTION"];?></td>
+  <td>
+    <a href="index.php?controller=productos&action=borrarcesta&numero1=<?php echo $compra["ID"];?>">
+      <button>Eliminar</button>
+    </a>
+  </td>
+  </tr><?php
 
-    </div>
-  </div>
+  $precio = $precio + $compra["PRICE"];
 
-            <!-- FIN Cuadraditos -->
+}
+
+?>
+<tr>
+
+<td class="text-light">Precio final: <?php echo $precio;?> €.</td>
+
+<tr>
+
+  </tbody>
+</table>
+
+  <?php   if(isset($_SESSION["usuario"])){ ?>
+
+    <a href="index.php?controller=productos&action=finalizar&direccion=<?php echo $usuarioactuafinCesta[0]['ADRESS']; ?>">
+
+      <button >Finalizar</button>
+    </a>
+
+    <a href="index.php?controller=productos&action=vaciarCarrito">
+
+      <button >Vaciar</button>
+    </a>
+
+  <?php } else { ?>
+
+    <a class="text-light" href="index.php">Volver</a>
+
+  <?php } ?>
+
+</div>
+
+<?php } ?>
 
 
 <?php include 'footer_view.phtml' ; ?>

@@ -44,6 +44,7 @@
             return $result;
         }
 
+//Crea los links
         public function crearLinks( $enlaces ) {
             $ultimo  = ceil( $this->total / $this->limite);
             $comienzo = (($this->pagina - $enlaces) > 0) ? $this->pagina-$enlaces : 1;

@@ -31,8 +31,8 @@ public function setName($name) {
   $this->name = $name;
 }
 /**
-* Extreu totes les persones de la taula
-* @return array Bidimensional de totes les persones
+* Obtiene la marca
+*
 */
 public function get_brand(){
     $consulta=$this->db->query("select * from BRAND;");

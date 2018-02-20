@@ -46,7 +46,7 @@ function name1(){
 	}
 }
 
-function email1() {
+function emaifinCesta() {
 
 	var email = document.getElementById("email").value;
 

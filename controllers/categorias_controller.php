@@ -5,6 +5,7 @@ require_once("models/categorias_model.php");
 
 class categorias_controller {
 
+//Muestra las categorias padre
 function categoriasPadreView(){
 
   $categorias=new categorias_model();
@@ -20,6 +21,7 @@ function categoriasPadreView(){
 
 }
 
+//Muestra las categorias hijas
 function categoriasHijasView(){
 
   $categorias=new categorias_model();
@@ -47,7 +49,7 @@ function categoriasHeaderView(){
 }
 
 /**
- * Muestra pantalla para añadir productos
+ * Muestra pantalla para añadir categorias
  * @return No
  */
 function add_categorias() {
@@ -66,8 +68,6 @@ function add_categorias() {
  * @return No
  */
 function insert_categorias() {
-
-
 
     $categorias=new categorias_model();
 
