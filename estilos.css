@@ -66,6 +66,10 @@
   background-color: black;
 }
 
+.collapseWhite a{
+  color:white;
+}
+
 #filtro{
   margin-top: 15px;
 }
@@ -103,5 +107,21 @@
   display: block;
 }
 .dropdown-hover {
-width: 80px;
+width: 135px;
+}
+
+
+/* Carro flotante */
+#carroFloat {
+  position: fixed;
+  top:53px;
+  right:0px;
+  background-color: white;
+  z-index: 1;
+
+  width: 400px;
+}
+
+.img_cesta{
+  width: 200px;
 }

@@ -11,8 +11,8 @@ include 'carrusel_view.phtml' ;
 <!-- filtros -->
 <hr>
 <form action="index.php?controller=productos&action=fmarca" method="post">
-  <dt class="text-light">- Marca - </dt>
-    <br>
+  <dt class="text-light" data-toggle="tooltip" data-placement="right" title="Haz click encima de la marca que deseas buscar">- Marca - </dt>
+  <br>
     <?php foreach ($marcas as $marca) { ?>
 
       <div class="text-light">  <input type="checkbox" name="marca" value="<?php echo $marca['ID']; ?>"><?php echo $marca['NAME']; ?><br>
@@ -21,7 +21,7 @@ include 'carrusel_view.phtml' ;
     <br>
     <button type="submit" class="btn btn-info" value="Buscar">Buscar</button>
 <br><hr>
-  <dt class="text-light">- Precios -</dt>
+  <dt class="text-light" title="Filtro por precio" data-toggle="popover" data-trigger="hover" data-content="Indica el rango de precio que deseas ver los productos">- Precios -</dt>
     <br>
   </form>
   <form action="index.php?controller=productos&action=fprecio" method="post">
@@ -40,7 +40,7 @@ include 'carrusel_view.phtml' ;
 foreach ($datos as $dato) {
   ?>
   <div class=" productos1 text-center card col-11 col-sm-5 col-lg-3 "  style="width:400px" >
-    <a  data-toggle="modal" data-target="#<?php echo $dato['ID']?>" > <img class="card-img-top" src="<?php echo $dato['URL'] ?>"
+    <a  data-toggle="modal" data-target="#<?php echo $dato['ID']?>" > <img onmouseover="bigImg(this)" onmouseout="normalImg(this)" class="card-img-top" src="<?php echo $dato['URL'] ?>"
       alt="Card image" style="width:100%"></a>
 
 
@@ -120,6 +120,40 @@ foreach ($datos as $dato) {
 
       </div>
 
-<?php include'controllers/paginacion_controller.php'; ?>
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 center-block" >
+           <ul class="pagination pagination-lg">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul></div>
+      </div>
+
+      <script>
+
+      //Script para que funcione el tooltip
+      $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();
+      });
+
+      //Script para que funcione el popover
+      $(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+});
+
+    //Función para hacer más grande las imagenes cuando pasas por encima.
+function bigImg(x) {
+    x.style.height = "286px";
+    x.style.width = "286px";
+}
+
+//Función para hacer normales las imagenes cuando pasas por encima.
+function normalImg(x) {
+    x.style.height = "186px";
+    x.style.width = "186px";
+}
+</script>
 
 <?php include 'footer_view.phtml' ; ?>

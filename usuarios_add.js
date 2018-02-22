@@ -22,7 +22,11 @@ function username1(){
 
 	if(username == "" || username.length < 2){
 
-		document.getElementById("comprobacionUsername").innerHTML = "El campo Usuario no puede estar vacio.";
+		document.getElementById("alertaDeUsuario").classList.remove("invisible");
+
+		document.getElementById("comprobacionUsername").innerHTML = "El campo Usuario no puede estar vacio." ;
+
+
 
 	} else {
 
@@ -38,6 +42,7 @@ function name1(){
 	if(name == "" || name.length < 2){
 
 		document.getElementById("comprobacionName").innerHTML = "El campo Nombre no puede estar vacio.";
+		document.getElementById("alertaDeNombre").classList.remove("invisible");
 
 	} else {
 
@@ -55,7 +60,7 @@ function emaifinCesta() {
 	if(!comprobacion.test(email)){
 
 		document.getElementById("comprobacionEmail").innerHTML = "La comprobacion de email no es correcta.";
-
+document.getElementById("alertaDeEmail").classList.remove("invisible");
 
 	} else {
 
@@ -70,13 +75,22 @@ var password;
 function password1() {
 
 	password = document.getElementById("password").value;
-	if (password == "" || password.length < 8) {
+var comprobacionPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#.$($)$-$_])[A-Za-z\d$@$!%*?&#.$($)$-$_]{8,15}$/;
+
+	if(!comprobacionPass.test(password)){
 
 		document.getElementById("comprobacionPassword").innerHTML = "La contraseña no es valida.";
+		document.getElementById("alertaDeContrasena1").classList.remove("invisible");
 
-	}else {
+	} else {
+
 		document.getElementById("comprobacionPassword").innerHTML = "La contraseña es valida.";
+
+		return false;
+
 	}
+
+
 
 }
 
@@ -97,6 +111,7 @@ function passwordrepeat(){
 		// si no coinciden, muestra mensaje de error y se suma 1 a la variable error
 
 		document.getElementById("comprobacionPasswordRepeticion").innerHTML = "Las contraseñas no coinciden.";
+		document.getElementById("alertaDeContrasena").classList.remove("invisible");
 
 
 	}
@@ -110,6 +125,7 @@ function direccion1(){
 	if(direccion == "" || direccion.length < 2){
 
 		document.getElementById("comprobacionDireccion").innerHTML = "El campo Direccion no puede estar vacio.";
+		document.getElementById("alertaDeDireccion").classList.remove("invisible");
 
 	} else {
 
@@ -127,6 +143,8 @@ function cp1() {
 	if(!comprobacion.test(cp)){
 
 		document.getElementById("comprobacionCp").innerHTML = "La comprobacion del Codigo Postal no es correcta.";
+		document.getElementById("alertaDeCp").classList.remove("invisible");
+
 
 
 	} else {
@@ -169,6 +187,7 @@ function captcha1(){
 	} else {
 
 		document.getElementById("comprobacionCaptcha").innerHTML = "El Captcha no es correcto";
+		document.getElementById("alertaDeCaptcha").classList.remove("invisible");
 
 	}
 

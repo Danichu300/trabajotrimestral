@@ -200,6 +200,7 @@
 <!--  Formulario-->
 <div class="container">
 
+
 <br>
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
@@ -241,40 +242,86 @@
                 <input type="text" class="form-control" id="username" placeholder="Nombre de usuario" name="username"  onblur="username1()">
                   <label id="comprobacionUsername"></label>
               </div>
+
+              <div class="alert alert-danger alert-dismissable fade show invisible" id="alertaDeUsuario">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong>  Error </strong> en el campo Usuario
+              </div> 
+
               <div class="form-group text-white">
                 <label for="name">Nombre y apellidos:</label>
                 <input type="text" class="form-control" id="name" placeholder="Nombre completo" name="name" onblur="name1()">
                 <label id="comprobacionName"></label>
               </div>
+
+              <div class="alert alert-danger alert-dismissable fade show invisible" id="alertaDeNombre">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong>  Error </strong> en el campo de Nombre y Apellidos
+              </div>
+
               <div class="form-group text-white">
                 <label for="email">Email:</label>
                 <input type="email" class="form-control" id="email" placeholder="Introducir email" name="email" onblur="emaifinCesta()">
                 <label id="comprobacionEmail"></label>
               </div>
+
+              <div class="alert alert-danger alert-dismissable fade show invisible" id="alertaDeEmail">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong>  Error </strong> en el campo de Email
+              </div>
+
               <div class="form-group text-white">
                 <label for="password">Contraseña:</label>
                 <input type="password" class="form-control" id="password" placeholder="Contraseña" name="password" onblur="password1()">
                   <label id="comprobacionPassword"></label>
+
+                  <div class="alert alert-danger alert-dismissable fade show invisible" id="alertaDeContrasena1">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  <strong>  Error </strong> en el campo Contraseña
+                  </div>
               </div>
               <div class="form-group text-white">
               <label for="pwd">Repetir contraseña:</label>
               <input type="password" class="form-control" id="password2" placeholder="Repite la contraseña" name="password2" onblur="passwordrepeat()">
               <label id="comprobacionPasswordRepeticion"></label>
             </div>
+
+            <div class="alert alert-danger alert-dismissable fade show invisible" id="alertaDeContrasena">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>  Error </strong> en el campo Contraseña, no son iguales,
+            </div>
+
             <div class="form-group text-white">
               <label for="direccion">Dirección:</label>
               <input type="text" class="form-control" id="direccion" placeholder="Dirección" name="direccion" onblur="direccion1()">
                 <label id="comprobacionDireccion"></label>
             </div>
+
+            <div class="alert alert-danger alert-dismissable fade show invisible" id="alertaDeDireccion">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>  Error </strong> en el campo Dirección
+            </div>
+
             <div class="form-group text-white">
               <label for="cp">CP:</label>
               <input type="text" class="form-control" id="cp" placeholder="Codigo Postal" name="cp" onblur="cp1()">
               <label id="comprobacionCp"></label>
             </div>
+
+            <div class="alert alert-danger alert-dismissable fade show invisible" id="alertaDeCp">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>  Error </strong> en el campo de Código Postal
+            </div>
+
             <div class="form-group text-white">
               <label for="captcha">Captcha:</label><label id="ramdom1"></label><label> + </label><label id="ramdom2"></label>
               <input type="text" class="form-control" id="captcha" placeholder="Captcha" name="captcha" onblur="captcha1()">
               <label id="comprobacionCaptcha"></label>
+            </div>
+
+            <div class="alert alert-danger alert-dismissable fade show invisible" id="alertaDeCaptcha">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>  Error </strong> en el campo de captcha
             </div>
 
             <button type="submit" name="insert" value="Guardar "class="btn btn-primary" id="finaliza" disabled >Submit</button>

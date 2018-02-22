@@ -10,15 +10,15 @@ if ($cestaVacia == null){
 
 } else { ?>
 
-<div class="container">
+<div class="container table-responsive-sm">
   <table clas="table ">
     <thead>
       <tr>
         <th class="text-light">Imagen</th>
-        <th class="text-light">Nombre</th>
+        <th class="text-light">Descripción</th>
         <th class="text-light">Cantidad</th>
-        <th class="text-light"> €PUn</th>
-        <th class="text-light">Descripción </th>
+        <th class="text-light"> Precio Unidad</th>
+
       </tr>
     </thead>
   </tbody>
@@ -30,10 +30,10 @@ foreach ($cesta21 as $compra) {
 
   ?><tr>
   <td><img class="card-img-top img_cesta" src="<?php echo $compra['URL']; ?>" alt="Card image"></td>
-  <td class="text-light"><?php echo $compra["NAME"];?></td>
-  <td class="text-light"><?php echo $compra["ID"];?></td>
-  <td class="text-light"><?php echo $compra["PRICE"];?>€</td>
   <td class="text-light"><?php echo $compra["SHORTDESCRIPTION"];?></td>
+  <td class="text-light"> <input type="number" class="form-control " value="1" ></td>
+  <td class="text-light"><?php echo $compra["PRICE"];?>€</td>
+
   <td>
     <a href="index.php?controller=productos&action=borrarcesta&numero1=<?php echo $compra["ID"];?>">
       <button>Eliminar</button>
@@ -48,7 +48,7 @@ foreach ($cesta21 as $compra) {
 ?>
 <tr>
 
-<td class="text-light">Precio final: <?php echo $precio;?> €.</td>
+<td class="text-light"><dt>Precio final: <?php echo $precio;?> €.</dt></td>
 
 <tr>
 

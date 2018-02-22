@@ -45,7 +45,7 @@ function insert() {
             header( "Location: index.php?controller=usuarios&action=add");
 
           }
-          
+
 
         }
         else {
