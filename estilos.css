@@ -2,7 +2,13 @@
 /* vista donde se ven un conjunto de productos*/
 .productos1{
   margin:20px;
+
 }
+
+#productos1Zoom{
+  width:216px
+}
+
 
 /* Make the image fully responsive */
 .carousel-inner img {
@@ -124,4 +130,92 @@ width: 135px;
 
 .img_cesta{
   width: 200px;
+}
+
+/*Galeria*/
+
+.galeriaEspacio {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.galeriaEspacio img{
+  width: 100%;
+}
+/*fin galeria*/
+
+/*Styles*/
+
+#botonCrearCategoria{
+    margin-bottom: 400px;
+}
+
+#logoGMS{
+  margin-left:25px;
+  margin-top: 5px;
+}
+
+#logoGMS img{
+  width:200px;
+}
+
+#logoCarrito img{
+  width:50px;
+}
+
+#modalHome{
+  width:100%;
+}
+
+.stock0{
+  color:red;
+}
+
+.stockPoco{
+  color:orange;
+}
+
+.stockMucho{
+  color:green;
+}
+
+.SlidesW100{
+  width:100%;
+}
+
+#nCategoria{
+margin-right: 55px;
+}
+
+
+#nMarca{
+margin-right: 79px;
+}
+
+#nPrecio{
+margin-right: 79px;
+}
+
+#nStock{
+margin-right: 84px;
+}
+
+#nNombre{
+margin-right: 67px;
+}
+
+#nEnviar{
+margin-bottom: 400px;
+}
+
+#ABuscador{
+  margin-top: 16px;
+}
+
+#ALogin{
+  margin-top: 10px;
+}
+
+#ACarro{
+  margin-top: 10px;
 }

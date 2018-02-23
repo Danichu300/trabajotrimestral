@@ -7,153 +7,153 @@ include 'carrusel_view.phtml' ;
 <!-- Código PHP -->
 
 <div class="row">
-        <div class="col-sm-2" id="filtro">
-<!-- filtros -->
-<hr>
-<form action="index.php?controller=productos&action=fmarca" method="post">
-  <dt class="text-light" data-toggle="tooltip" data-placement="right" title="Haz click encima de la marca que deseas buscar">- Marca - </dt>
-  <br>
-    <?php foreach ($marcas as $marca) { ?>
+  <div class="col-sm-2" id="filtro">
+    <!-- filtros -->
+    <hr>
+    <form action="index.php?controller=productos&action=fmarca" method="post">
+      <dt class="text-light" data-toggle="tooltip" data-placement="right" title="Haz click encima de la marca que deseas buscar">- Marca - </dt>
+      <br>
+      <?php foreach ($marcas as $marca) { ?>
 
-      <div class="text-light">  <input type="checkbox" name="marca" value="<?php echo $marca['ID']; ?>"><?php echo $marca['NAME']; ?><br>
-      </div>
-    <?php } ?>
-    <br>
-    <button type="submit" class="btn btn-info" value="Buscar">Buscar</button>
-<br><hr>
-  <dt class="text-light" title="Filtro por precio" data-toggle="popover" data-trigger="hover" data-content="Indica el rango de precio que deseas ver los productos">- Precios -</dt>
-    <br>
-  </form>
-  <form action="index.php?controller=productos&action=fprecio" method="post">
-    <input type="number" class="form-control pequeno" value="0" name="precioMinimo">
-    <label class="text-light">hasta</label>
-    <input type="number" class="form-control pequeno" value="100" name="precioMaximo">
-    <br>
-    <button type="submit" class="btn btn-info" value="Buscar">Buscar</button><br><hr>
-  </form>
+        <div class="text-light">  <input type="checkbox" name="marca" value="<?php echo $marca['ID']; ?>"><?php echo $marca['NAME']; ?><br>
         </div>
-        <div class="col-sm-10" >
-          <!-- Productos -->
-          <div class="row contenido productos">
-<?php
-
-foreach ($datos as $dato) {
-  ?>
-  <div class=" productos1 text-center card col-11 col-sm-5 col-lg-3 "  style="width:400px" >
-    <a  data-toggle="modal" data-target="#<?php echo $dato['ID']?>" > <img onmouseover="bigImg(this)" onmouseout="normalImg(this)" class="card-img-top" src="<?php echo $dato['URL'] ?>"
-      alt="Card image" style="width:100%"></a>
-
-
-      <!-- The Modal -->
-       <div class="modal fade" id="<?php echo $dato['ID']?>">
-         <div class="modal-dialog modal-dialog-centered">
-           <div class="modal-content">
-
-             <!-- Modal Header -->
-             <div class="modal-header">
-               <h4 class="modal-title"><?php echo $dato['SHORTDESCRIPTION'] ?></h4>
-               <button type="button" class="close" data-dismiss="modal">&times;</button>
-             </div>
-
-             <!-- Modal body -->
-             <div class="modal-body">
-               <div class="card-body">
-                 <img class="card-img-top" src="<?php echo $dato['URL'] ?>"
-                   alt="Card image" style="width:100%">
-                 <h4 class="card-title" ><?php echo $dato['SHORTDESCRIPTION'] ?> </h4>
-                 <p class="card-title" ><?php echo $dato['LONGDESCRIPTION'] ?> </p>
-                 <h1 class="card-text"><?php echo $dato['PRICE'] ?> €</h1>
-
-
-                 <small> <?php
-                 if ($dato['STOCK'] == 0) { ?>
-                   <span style="color:red"> <?php echo "No quedan productos"; ?></span>
-                   <?php
-                 } elseif ($dato['STOCK'] < 5) { ?>
-                   <span style="color:orange"> <?php echo "Quedan pocos en stock"; ?></span>
-                 <?php } else{?>
-                   <span style="color:green"> <?php echo "Hay productos en stock"; ?></span>
-                 <?php } ?>
-               </small><br><br>
-               <a href="index.php?controller=productos&action=cesta&id=<?php echo $dato['ID'];?>&uni=<?php echo $dato['STOCK'];?>" class="btn btn-primary">Añadir al carrito</a>
-
-             </div>
-             </div>
-
-             <!-- Modal footer -->
-             <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-             </div>
-
-           </div>
-         </div>
-       </div>
-
-
-      <div class="card-body">
-        <h4 class="card-title" ><?php echo $dato['SHORTDESCRIPTION'] ?> </h4>
-        <p class="card-title" ><?php echo $dato['LONGDESCRIPTION'] ?> </p>
-        <h1 class="card-text badge badge-danger"><strike><?php echo $dato['PRICE']*1.25 ?></strike> €</h1>
-          <h1 class="card-text"><?php echo $dato['PRICE'] ?> €</h1>
-
-
-        <small> <?php
-        if ($dato['STOCK'] == 0) { ?>
-          <span style="color:red"> <?php echo "No quedan productos"; ?></span>
-          <?php
-        } elseif ($dato['STOCK'] < 5) { ?>
-          <span style="color:orange"> <?php echo "Quedan pocos en stock"; ?></span>
-        <?php } else{?>
-          <span style="color:green"> <?php echo "Hay productos en stock"; ?></span>
-        <?php } ?>
-      </small><br><br>
-      <a href="index.php?controller=productos&action=cesta&id=<?php echo $dato['ID'];?>&uni=<?php echo $dato['STOCK'];?>" class="btn btn-primary">Añadir al carrito</a>
-
-    </div>
+      <?php } ?>
+      <br>
+      <button type="submit" class="btn btn-info" value="Buscar">Buscar</button>
+      <br><hr>
+      <dt class="text-light" title="Filtro por precio" data-toggle="popover" data-trigger="hover" data-content="Indica el rango de precio que deseas ver los productos">- Precios -</dt>
+      <br>
+    </form>
+    <form action="index.php?controller=productos&action=fprecio" method="post">
+      <input type="number" class="form-control pequeno" value="0" name="precioMinimo">
+      <label class="text-light">hasta</label>
+      <input type="number" class="form-control pequeno" value="100" name="precioMaximo">
+      <br>
+      <button type="submit" class="btn btn-info" value="Buscar">Buscar</button><br><hr>
+    </form>
   </div>
-  <?php
-}
-?>
-<!-- FIN Cuadraditos -->
-</div>
+  <div class="col-sm-10" >
+    <!-- Productos -->
+    <div class="row contenido productos">
+      <?php
+
+      foreach ($datos as $dato) {
+        ?>
+        <div class=" productos1 text-center card col-11 col-sm-5 col-lg-3 "  >
+          <a  data-toggle="modal" data-target="#<?php echo $dato['ID']?>" > <img onmouseover="bigImg(this)" onmouseout="normalImg(this)" class="card-img-top" src="<?php echo $dato['URL'] ?>"
+            alt="Card image" id="productos1Zoom"></a>
+
+
+            <!-- The Modal -->
+            <div class="modal fade" id="<?php echo $dato['ID']?>">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title"><?php echo $dato['SHORTDESCRIPTION'] ?></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    <div class="card-body">
+                      <img class="card-img-top" src="<?php echo $dato['URL'] ?>"
+                      alt="Card image" id="modalHome">
+                      <h4 class="card-title" ><?php echo $dato['SHORTDESCRIPTION'] ?> </h4>
+                      <p class="card-title" ><?php echo $dato['LONGDESCRIPTION'] ?> </p>
+                      <h1 class="card-text"><?php echo $dato['PRICE'] ?> €</h1>
+
+
+                      <small> <?php
+                      if ($dato['STOCK'] == 0) { ?>
+                        <span class="stock0"> <?php echo "No quedan productos"; ?></span>
+                        <?php
+                      } elseif ($dato['STOCK'] < 5) { ?>
+                        <span class="stockPoco"> <?php echo "Quedan pocos en stock"; ?></span>
+                      <?php } else{?>
+                        <span class="stockMucho"> <?php echo "Hay productos en stock"; ?></span>
+                      <?php } ?>
+                    </small><br><br>
+                    <a href="index.php?controller=productos&action=cesta&id=<?php echo $dato['ID'];?>&uni=<?php echo $dato['STOCK'];?>" class="btn btn-primary">Añadir al carrito</a>
+
+                  </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="card-body">
+            <h4 class="card-title" ><?php echo $dato['SHORTDESCRIPTION'] ?> </h4>
+            <p class="card-title" ><?php echo $dato['LONGDESCRIPTION'] ?> </p>
+            <h1 class="card-text badge badge-danger"><strike><?php echo $dato['PRICE']*1.25 ?></strike> €</h1>
+            <h1 class="card-text"><?php echo $dato['PRICE'] ?> €</h1>
+
+
+            <small> <?php
+            if ($dato['STOCK'] == 0) { ?>
+              <span class="stock0">> <?php echo "No quedan productos"; ?></span>
+              <?php
+            } elseif ($dato['STOCK'] < 5) { ?>
+              <span class="stockPoco"> <?php echo "Quedan pocos en stock"; ?></span>
+            <?php } else{?>
+              <span class="stockMucho"> <?php echo "Hay productos en stock"; ?></span>
+            <?php } ?>
+          </small><br><br>
+          <a href="index.php?controller=productos&action=cesta&id=<?php echo $dato['ID'];?>&uni=<?php echo $dato['STOCK'];?>" class="btn btn-primary">Añadir al carrito</a>
+
         </div>
-
       </div>
+      <?php
+    }
+    ?>
+    <!-- FIN Cuadraditos -->
+  </div>
+</div>
 
-      <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 center-block" >
-           <ul class="pagination pagination-lg">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-          </ul></div>
-      </div>
+</div>
 
-      <script>
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-12 center-block" >
+    <ul class="pagination pagination-lg">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul></div>
+  </div>
 
-      //Script para que funcione el tooltip
-      $(document).ready(function(){
-          $('[data-toggle="tooltip"]').tooltip();
-      });
+  <script>
 
-      //Script para que funcione el popover
-      $(document).ready(function(){
+  //Script para que funcione el tooltip
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+
+  //Script para que funcione el popover
+  $(document).ready(function(){
     $('[data-toggle="popover"]').popover();
-});
+  });
 
-    //Función para hacer más grande las imagenes cuando pasas por encima.
-function bigImg(x) {
-    x.style.height = "286px";
-    x.style.width = "286px";
-}
+  //Función para hacer más grande las imagenes cuando pasas por encima.
+  function bigImg(x) {
+    x.style.height = "300px";
+    x.style.width = "300px";
+  }
 
-//Función para hacer normales las imagenes cuando pasas por encima.
-function normalImg(x) {
-    x.style.height = "186px";
-    x.style.width = "186px";
-}
-</script>
+  //Función para hacer normales las imagenes cuando pasas por encima.
+  function normalImg(x) {
+    x.style.height = "216px";
+    x.style.width = "216px";
+  }
+  </script>
 
-<?php include 'footer_view.phtml' ; ?>
+  <?php include 'footer_view.phtml' ; ?>

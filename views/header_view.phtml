@@ -6,10 +6,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="estilos.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-  <!--   Hacer que el botón de perfil sea desplegable con hover  -->
+  <!--   Hacer que el botón de perfil y menu sea desplegable con hover  -->
 
   <script>
   $('body').on('mouseenter mouseleave','.dropdown-hover',function(e){
@@ -20,7 +21,7 @@
   });
   </script>
 
-  <link rel="stylesheet" type="text/css" href="estilos.css">
+
 
 </head>
 
@@ -35,20 +36,20 @@
 
         <div class=" col-12 col-sm-12 col-md-3" >
           <!-- Brand/logo -->
-          <a class="navbar-brand img-fluid" href="index.php" style="margin-left:25px;">
-            <img src="Imagenes/Web/logo.png" alt="logo" style="width:200px;">
+          <a class="navbar-brand img-fluid" href="index.php" id="logoGMS" >
+            <img src="Imagenes/Web/logo.png" alt="logo" >
           </a>
         </div>
 
         <div class=" col-12 col-sm-12 col-md-4" >
           <!-- Buscador -->
-          <form class="form-inline" action="index.php?controller=productos&action=search" method="POST">
+          <form class="form-inline"  id="ABuscador"action="index.php?controller=productos&action=search" method="POST">
             <input class="form-control mr-sm-2" type="search" name="buscador" placeholder="Buscar..." aria-label="Buscar">
             <button class="btn btn-info " type="submit">Search</button>
           </form>
         </div>
 
-        <div class=" col-8 col-sm-8 col-md-3" >
+        <div class=" col-8 col-sm-8 col-md-3" id="ALogin">
           <!-- Login -->
           <?php if (isset($_SESSION['name'])) {
 
@@ -109,14 +110,14 @@
 
         </div>
 
-        <div class="col-4 col-sm-4 col-md-2" >
+        <div class="col-4 col-sm-4 col-md-2" id="ACarro">
           <!-- inicio carrito -->
 
 
             <!-- Carrito -->
             <!-- Brand/logo -->
-            <a class="navbar-brand" href="index.php?controller=productos&action=cestaok">
-              <img src="Imagenes/Web/carrito.png" alt="logo" style="width:50px;" onmouseover="mostrarCarr()" onmouseout="ocultarCarr()">
+            <a class="navbar-brand" href="index.php?controller=productos&action=cestaok" id="logoCarrito">
+              <img src="Imagenes/Web/carrito.png" alt="logo" onmouseover="mostrarCarr()" onmouseout="ocultarCarr()">
               <span class="badge badge-light">1</span>
             </a>
 

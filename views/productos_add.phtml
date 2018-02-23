@@ -6,7 +6,7 @@
 
 
 
-  <label class="text-white" >Categoria:</label>
+  <label class="text-white" id="nCategoria" >Categoria:</label>
       <select name="category">
         <?php
         foreach ($datoshijas as $datohija) {
@@ -15,16 +15,9 @@
 
       </select><br>
 
-      <!-- <div class="form-group text-white">
 
-        <label  name="sponsorizado">Sponsored:</label>
-        <select>
-          <option  value="N">N</option>
-          <option  value="Y">Y</option>
-        </select>
-      </div> -->
 
-      <label class="text-white" >Marca:</label>
+      <label class="text-white" id="nMarca" >Marca:</label>
           <select name="brand">
             <?php
             foreach ($datosmarcas as $datosmarca) {
@@ -35,36 +28,35 @@
 
 
       <div class="form-inline text-white">
-        <label >Precio: </label>
-        <input type="text" class="form-control" id="price" placeholder="€" name="price" style="margin-left: 78px;">
+        <label id="nPrecio">Precio: </label>
+        <input type="text" class="form-control" id="price" placeholder="€" name="price" >
       </div>
 
       <div class="form-inline text-white">
-        <label >Stock: </label>
-        <input type="text" class="form-control" id="stock" placeholder="stock" name="stock" style="margin-left: 84px;">
+        <label id="nStock">Stock: </label>
+        <input type="text" class="form-control" id="stock" placeholder="stock" name="stock" >
       </div>
 
       <div class="form-inline text-white">
-        <label>Nombre: </label>
-        <input type="text" class="form-control" id="nombre" placeholder="Ej. Asus Z370-F Gaming" name="nombre" style="margin-left: 67px;">
+        <label id="nNombre">Nombre: </label>
+        <input type="text" class="form-control" id="nombre" placeholder="Ej. Asus Z370-F Gaming" name="nombre" >
       </div>
 
 
 
       <div class="form-inline text-white">
-        <label>Descripción corta: </label>
+        <label id="nDescc">Descripción corta: </label>
         <input type="text" class="form-control" id="descorta" placeholder="Ej. Asus Z370-F Gaming" name="descorta">
       </div>
 
       <div class="form-inline text-white">
-        <label>Descripción larga: </label>
+        <label id="nDescl">Descripción larga: </label>
         <input type="text" class="form-control" id="deslarga" placeholder="Ej. Nueva placa base..." name="deslarga">
       </div>
       <br>
 
 
-      <button type="submit" name="insert_productos" class="btn btn-info btn-lg" style="
-    margin-bottom: 400px;">Crear producto</button>
+      <button type="submit" name="insert_productos" class="btn btn-info btn-lg" id="nEnviar" >Crear producto</button>
     </form>
 
 

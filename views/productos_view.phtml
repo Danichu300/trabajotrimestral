@@ -11,21 +11,21 @@
 
   foreach ($datos as $dato) {
     ?>
-    <div class="productos1 text-center card col-11 col-sm-5 col-lg-3 " >
+    <div class="productos1 text-center card col-11 col-sm-5 col-lg-3 "  >
       <a  href="index.php?controller=productos&action=get_producto&ID=<?php echo$dato['ID']?>" > <img class="card-img-top" src="<?php echo $dato['URL'] ?>"
-        alt="Card image" style="width:100%"></a>
+        alt="Card image" ></a>
         <div class="card-body">
           <h4 class="card-title" ><?php echo $dato['SHORTDESCRIPTION'] ?> </h4>
           <h1 class="card-text"><?php echo $dato['PRICE'] ?> €</h1>
 
           <small> <?php
           if ($dato['STOCK'] == 0) { ?>
-            <span style="color:red"> <?php echo "No quedan productos"; ?></span>
+            <span class="stock0"> <?php echo "No quedan productos"; ?></span>
             <?php
           } elseif ($dato['STOCK'] < 5) { ?>
-            <span style="color:orange"> <?php echo "Quedan pocos en stock"; ?></span>
+            <span class="stockPoco" ><?php echo "Quedan pocos en stock"; ?></span>
           <?php } else{?>
-            <span style="color:green"> <?php echo "Hay productos en stock"; ?></span>
+            <span class="stockMucho"> <?php echo "Hay productos en stock"; ?></span>
           <?php } ?>
         </small><br><br>
 

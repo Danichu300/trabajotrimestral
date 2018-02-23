@@ -6,8 +6,8 @@
 
 <!-- Cuadraditos -->
 <nav class="breadcrumb">
-  <a class="breadcrumb-item text-secondary" href="#">Componentes</a>
-  <a class="breadcrumb-item text-secondary" href="#">Procesadores</a>
+  <a class="breadcrumb-item text-secondary" href="#">Ordenadores</a>
+  <a class="breadcrumb-item text-secondary" href="#">Portatiles</a>
   <span class="breadcrumb-item active text-dark"><?php echo $PRODUCT['SHORTDESCRIPTION'] ?></span>
 </nav>
 <div class="row contenido">
@@ -15,6 +15,71 @@
   <div class="col-11 col-sm-4  col-md-4" >
 
     <img class="img-fluid" src="<?php echo $PRODUCT['URL'] ?>" >
+    <!-- Galeria -->
+
+
+    <div class="row galeriaEspacio">
+      <div class="column">
+        <img src="Imagenes/Galeria/1.jpg"  onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+      </div>
+      <div class="column">
+        <img src="Imagenes/Galeria/2.jpg"  onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+      </div>
+      <div class="column">
+        <img src="Imagenes/Galeria/3.jpg" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+      </div>
+      <div class="column">
+        <img src="Imagenes/Galeria/4.jpg"  onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
+      </div>
+    </div>
+
+    <div id="myModal2" class="modal">
+      <span class="close cursor" onclick="closeModal()">&times;</span>
+      <div class="modal-content">
+
+        <div class="mySlides">
+          <div class="numbertext">1 / 4</div>
+          <img src="Imagenes/Galeria/1.jpg" class="SlidesW100">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">2 / 4</div>
+          <img src="Imagenes/Galeria/2.jpg" class="SlidesW100">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">3 / 4</div>
+          <img src="Imagenes/Galeria/3.jpg" class="SlidesW100">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">4 / 4</div>
+          <img src="Imagenes/Galeria/4.jpg" class="SlidesW100">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+        <div class="caption-container">
+          <p id="caption"></p>
+        </div>
+
+
+        <div class="column">
+          <img class="demo cursor SlidesW100" src="Imagenes/Galeria/1.jpg" onclick="currentSlide(1)" >
+        </div>
+        <div class="column">
+          <img class="demo cursor SlidesW100" src="Imagenes/Galeria/2.jpg" onclick="currentSlide(2)" >
+        </div>
+        <div class="column">
+          <img class="demo cursor SlidesW100" src="Imagenes/Galeria/3.jpg"  onclick="currentSlide(3)" >
+        </div>
+        <div class="column">
+          <img class="demo cursor SlidesW100" src="Imagenes/Galeria/4.jpg"  onclick="currentSlide(4)" >
+        </div>
+      </div>
+    </div>
+    <!-- fin galeria -->
   </div>
 
 
@@ -33,83 +98,19 @@
 
     <small> <?php
     if ($PRODUCT['STOCK'] == 0) { ?>
-      <span style="color:red"> <?php echo "No quedan productos"; ?></span>
+      <span class="stock0"> <?php echo "No quedan productos"; ?></span>
       <?php
     } elseif ($PRODUCT['STOCK'] < 5) { ?>
-      <span style="color:orange"> <?php echo "Quedan pocos en stock"; ?></span>
+      <span class="stockPoco"> <?php echo "Quedan pocos en stock"; ?></span>
     <?php } else{?>
-      <span style="color:green"> <?php echo "Hay productos en stock"; ?></span>
+      <span class="stockMucho"> <?php echo "Hay productos en stock"; ?></span>
     <?php } ?>
   </small><br><br>
 
   <a href="index.php?controller=productos&action=cesta&id=<?php echo $PRODUCT['ID'];?>&uni=<?php echo $PRODUCT['STOCK'];?>" class="btn btn-primary">Comprar</a>
 
 
-  <!-- Galeria -->
-  <h2 style="text-align:center">Galeria de imagenes</h2>
 
-  <div class="row">
-    <div class="column">
-      <img src="Imagenes/Galeria/1.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
-    </div>
-    <div class="column">
-      <img src="Imagenes/Galeria/2.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
-    </div>
-    <div class="column">
-      <img src="Imagenes/Galeria/3.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
-    </div>
-    <div class="column">
-      <img src="Imagenes/Galeria/4.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
-    </div>
-  </div>
-
-  <div id="myModal2" class="modal">
-    <span class="close cursor" onclick="closeModal()">&times;</span>
-    <div class="modal-content">
-
-      <div class="mySlides">
-        <div class="numbertext">1 / 4</div>
-        <img src="Imagenes/Galeria/1.jpg" style="width:100%">
-      </div>
-
-      <div class="mySlides">
-        <div class="numbertext">2 / 4</div>
-        <img src="Imagenes/Galeria/2.jpg" style="width:100%">
-      </div>
-
-      <div class="mySlides">
-        <div class="numbertext">3 / 4</div>
-        <img src="Imagenes/Galeria/3.jpg" style="width:100%">
-      </div>
-
-      <div class="mySlides">
-        <div class="numbertext">4 / 4</div>
-        <img src="Imagenes/Galeria/4.jpg" style="width:100%">
-      </div>
-
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-      <div class="caption-container">
-        <p id="caption"></p>
-      </div>
-
-
-      <div class="column">
-        <img class="demo cursor" src="Imagenes/Galeria/1.jpg" style="width:100%" onclick="currentSlide(1)" >
-      </div>
-      <div class="column">
-        <img class="demo cursor" src="Imagenes/Galeria/2.jpg" style="width:100%" onclick="currentSlide(2)" >
-      </div>
-      <div class="column">
-        <img class="demo cursor" src="Imagenes/Galeria/3.jpg" style="width:100%" onclick="currentSlide(3)" >
-      </div>
-      <div class="column">
-        <img class="demo cursor" src="Imagenes/Galeria/4.jpg" style="width:100%" onclick="currentSlide(4)" >
-      </div>
-    </div>
-  </div>
-  <!-- fin galeria -->
 
 </div>
 </div>
